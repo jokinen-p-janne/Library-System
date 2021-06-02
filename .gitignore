@@ -1,0 +1,7 @@
+library-system.code-workspace
+env/
+.vscode/
+__pycache__/
+.flake8
+*.prod
+docker-compose.prod.yml

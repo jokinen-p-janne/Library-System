@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./services/backend
+    command: python manage.py run -h 0.0.0.0
+    volumes:
+      - ./services/backend/:/usr/src/app/
+    ports:
+      - 5000:5000
+    env_file:
+      - ./services/backend/.env
