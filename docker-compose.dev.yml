@@ -9,4 +9,4 @@ services:
     ports:
       - 5000:5000
     env_file:
-      - ./services/backend/.env
+      - ./services/backend/.env.dev

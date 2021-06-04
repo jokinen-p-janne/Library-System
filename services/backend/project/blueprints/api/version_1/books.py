@@ -1,4 +1,4 @@
-from project.blueprints.api import bp
+from project.blueprints.api.version_1 import bp
 
 
 @bp.route('/books/<int:id>', methods=['GET'])

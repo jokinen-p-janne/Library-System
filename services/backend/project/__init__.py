@@ -29,6 +29,6 @@ def register_blueprints(app):
 
     app.register_blueprint(main_bp)
 
-    from project.blueprints.api import bp as api_bp
+    from project.blueprints.api.version_1 import bp as api_v1_bp
 
-    app.register_blueprint(api_bp, url_prefix='/api')
+    app.register_blueprint(api_v1_bp, url_prefix='/api/v1')
