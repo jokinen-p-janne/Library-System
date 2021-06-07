@@ -5,3 +5,4 @@ __pycache__/
 .flake8
 *.prod
 docker-compose.prod.yml
+.pytest_cache

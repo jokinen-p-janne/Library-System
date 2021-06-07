@@ -24,6 +24,8 @@ then
     python manage.py create_db
     echo "Tables created"
     python manage.py db upgrade
+    echo "Running tests"
+    pytest
 fi
 
 exec "$@"

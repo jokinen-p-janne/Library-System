@@ -1,15 +1,15 @@
 version: '3.8'
 
 services:
-  backend:
+  web:
     build:
-      context: ./services/backend
+      context: ./services/web
       dockerfile: Dockerfile.prod
     command: gunicorn --bind 0.0.0.0:5000 manage:app
     expose:
       - 5000
     env_file:
-      - ./services/backend/.env.test
+      - ./services/web/.env.test
     depends_on:
       - db
   db:
@@ -17,13 +17,13 @@ services:
     volumes:
       - postgres_data_test:/var/lib/postgresql/data/
     env_file:
-      - ./services/backend/.env.db.test
+      - ./services/web/.env.db.test
   nginx:
     build: ./services/nginx
     ports:
       - 1337:80
     depends_on:
-      - backend
+      - web
 
 volumes:
   postgres_data_test:
