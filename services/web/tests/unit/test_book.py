@@ -2,6 +2,7 @@ from project.models import Book
 
 
 def test_new_book():
-    book = Book('12345', "test", "test")
+    book = Book(title="test title", author="test author")
 
-    assert book.author == "test"
+    assert book.title == "test title"
+    assert book.author == "test author"

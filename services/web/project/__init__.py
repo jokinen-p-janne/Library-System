@@ -4,13 +4,10 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_user import UserManager
 
-from project.models import User
-
 
 login = LoginManager()
 db = SQLAlchemy()
 migrate = Migrate()
-user_manager = UserManager()
 
 
 def create_app():
@@ -24,7 +21,9 @@ def create_app():
     login.init_app(app)
     login.login_view = 'login'
 
-    user_manager.init_app(app, db, User)
+    from project.models import User
+
+    UserManager(app, db, User)
 
     register_blueprints(app)
 

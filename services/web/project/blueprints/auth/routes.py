@@ -3,7 +3,7 @@ from flask_login import current_user, login_user, logout_user
 from werkzeug.urls import url_parse
 
 from project import db
-from project.models import User
+from project.models import User, Role
 from project.blueprints.auth import bp
 from project.blueprints.auth.forms import LoginForm, RegistrationForm
 
@@ -52,6 +52,8 @@ def register():
         user = User(username=form.username.data, email=form.email.data)
 
         user.set_password(form.password.data)
+
+        user.roles.append(Role(name='customer'))
 
         db.session.add(user)
         db.session.commit()

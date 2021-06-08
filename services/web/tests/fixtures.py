@@ -1,7 +1,7 @@
 import pytest
 
 from project import create_app, db
-from project.models import Customer, Employee, Book
+from project.models import User, Role, Book
 
 
 @pytest.fixture(scope='session')
@@ -18,17 +18,23 @@ def test_client():
 
 
 @pytest.fixture(scope='module')
-def new_customer():
-    customer = Customer("Testi", "Testaaja", "testi.testaaja@test.com", "TestPassword1234")
+def new_test_customer():
+    customer = User(firstname="Lassi", lastname="Lainaaja", username="abcd0")
+    customer.roles.append(Role(name='customer'))
+
+    customer.set_password("Password1234")
 
     return customer
 
 
 @pytest.fixture(scope='module')
-def new_employee():
-    employee = Employee("Testi", "Testaaja", "TestPassword1234")
+def new_test_administrator():
+    administrator = User(firstname="Anssi", lastname="Admin", username="anssi.admin")
+    administrator.roles.append(Role(name='administrator'))
 
-    return employee
+    administrator.set_password("Password1234")
+
+    return administrator
 
 
 @pytest.fixture(scope='module')
